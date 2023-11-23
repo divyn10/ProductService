@@ -1,8 +1,11 @@
 package com.example.productservice.controllers;
 
+import com.example.productservice.dtos.GenereicProductDto;
 import com.example.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -15,13 +18,13 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public String getProductById(@PathVariable("id") Long id ){
+    public GenereicProductDto getProductById(@PathVariable("id") Long id ){
         return productService.getProductById(id);
     }
 
     @GetMapping
-    public void getAllProducts(){
-
+    public List<GenereicProductDto> getAllProducts(){
+        return productService.getAllProducts();
     }
 
     @DeleteMapping("/id")
@@ -29,9 +32,9 @@ public class ProductController {
 
     }
 
-
-    public void createProduct(){
-
+    @PostMapping
+    public GenereicProductDto createProduct(@RequestBody GenereicProductDto genereicProductDto){
+        return productService.createProduct(genereicProductDto);
     }
 
     public void updateProductById(){

@@ -1,13 +1,14 @@
 package com.example.productservice.services;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.example.productservice.dtos.FakeStoreProductDto;
+import com.example.productservice.dtos.GenereicProductDto;
+
+import java.util.List;
 
 public interface ProductService {
-    String getProductById(Long id );
-    void getAllProducts();
+    GenereicProductDto getProductById(Long id );
+    List<GenereicProductDto> getAllProducts();
     void deleteProductById();
-    void createProduct();
+    GenereicProductDto createProduct(GenereicProductDto genereicProductDto);
     void updateProductById();
 }
