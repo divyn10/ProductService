@@ -1,6 +1,7 @@
 package com.example.productservice.controllers;
 
 import com.example.productservice.dtos.GenereicProductDto;
+import com.example.productservice.exceptions.ProductNotFoundException;
 import com.example.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public GenereicProductDto getProductById(@PathVariable("id") Long id ){
+    public GenereicProductDto getProductById(@PathVariable("id") Long id ) throws ProductNotFoundException {
         return productService.getProductById(id);
     }
 
@@ -27,9 +28,9 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @DeleteMapping("/id")
-    public void deleteProductById(){
-
+    @DeleteMapping("/{id}")
+    public GenereicProductDto deleteProductById(@PathVariable Long id){
+        return productService.deleteProductById(id);
     }
 
     @PostMapping

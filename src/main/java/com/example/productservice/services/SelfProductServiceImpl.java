@@ -1,6 +1,5 @@
 package com.example.productservice.services;
 
-import com.example.productservice.dtos.FakeStoreProductDto;
 import com.example.productservice.dtos.GenereicProductDto;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +19,9 @@ public class SelfProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void deleteProductById() {
+    public GenereicProductDto deleteProductById(Long id) {
 
+        return null;
     }
 
     @Override
